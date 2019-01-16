@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using GeneSIPs.Common;
 using GeneSIPs.Header;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace GeneTests
         public void ToStringWorks()
         {
 
-            Faker<SentBy> sfaker = new Faker<SentBy>()
+            Faker<SipUser> sfaker = new Faker<SipUser>()
                 .StrictMode(true)
                 .RuleFor(o => o.Address, f => IPAddress.Parse(f.Internet.Ip()))
                 .RuleFor(o => o.Port, f => f.Random.Number(9000))

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeneSIPs.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace GeneSIPs.Header
 
         public string SIPVersion { get; set; } = "SIP/2.0";
         public Protocols Protocol { get; set; } = Protocols.UDP;
-        public SentBy SentBy { get; set; }
+        public SipUser SentBy { get; set; }
         public string Branch { get; set; }
         public string RPort { get; set; }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace GeneSIPs.Header
+namespace GeneSIPs.Common
 {
-    public class SentBy
+    public class SipUser
     {
         public IPAddress Address { get; set; }
         public int Port { get; set; }
