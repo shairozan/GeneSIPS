@@ -40,7 +40,7 @@ namespace GeneTests
 
             List<string> generated = new List<string>();
 
-            vaker.Generate(50).ForEach(x =>
+            Via.Faker.Generate(50).ForEach(x =>
             {
                generated.Add(x.ToString());
             });

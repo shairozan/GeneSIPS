@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using Bogus;
 
 namespace GeneSIPs.Header
 {
@@ -12,6 +13,22 @@ namespace GeneSIPs.Header
         /// </summary>
         public string Identifier { get; set; }
         public IPAddress Host { get; set; }
+
+        public CallId()
+        {
+
+        }
+
+        public CallId(Faker<CallId> CustomFaker)
+        {
+            Faker = CustomFaker;
+        }
+
+        public static Faker<CallId> Faker { get; set; } = new Faker<CallId>()
+            .StrictMode(true)
+            .RuleFor(o => o.Identifier, f => f.Random.String2(10, "abcdefghijklmnopqrstuvwxy0123456789"))
+            .RuleFor(o => o.Host, f => IPAddress.Parse(f.Internet.Ip()));
+
 
         public override string ToString()
         {
