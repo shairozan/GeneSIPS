@@ -10,8 +10,13 @@ namespace GeneSIPs.Request
         public enum MethodTypes
         {
             INVITE,
-            REGISTER,
-            CANCEL
+            ACK,
+            CANCEL,
+            BYE,
+            REFER,
+            OPTIONS,
+            NOTIFY,
+            INFO
         };
 
         public MethodTypes Method { get; set; }

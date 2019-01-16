@@ -31,7 +31,7 @@ namespace GeneSIPs.Header
         public string Branch { get; set; }
         public string RPort { get; set; }
         public static Faker<Via> Faker { get; set; } = Faker = new Faker<Via>()
-            .StrictMode(true)
+            .StrictMode(false)
             .RuleFor(o => o.SIPVersion, f => "SIP/2.0")
             .RuleFor(o => o.Branch, f => f.Random.String2(20, "abcdefghijklmnopqrstuvwxyz"))
             .RuleFor(o => o.RPort, f => "rport")

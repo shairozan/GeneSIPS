@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Bogus;
+using System.Linq;
 
 namespace GeneSIPs.Header
 {
@@ -11,13 +13,18 @@ namespace GeneSIPs.Header
         /// Also known as the "Friendly Name" in SMTP structures
         /// </summary>
         public string DisplayName { get; set; }
-        public SipUser User { get; set; }
+        public SipAddress User { get; set; }
         public string Tag { get; set; }
+        public static Faker<From> Faker { get; set; } = new Faker<From>()
+            .StrictMode(false)
+            .RuleFor(o => o.DisplayName, f => f.Name.FullName())
+            .RuleFor(o => o.User, f => SipAddress.Faker.Generate(1).First())
+            .RuleFor(o => o.Tag, f => f.Random.String2(5, "abcdefghijklmopqrstuvwxyz"));
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"From: {sb.Append(DisplayName)} ");
+            sb.Append($"From: {DisplayName} ");
             sb.Append($"<{User.ToString()}>");
 
             if(!string.IsNullOrWhiteSpace(Tag))

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using GeneSIPs.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Bogus;
+using System.Linq;
 
 namespace GeneSIPs.Header
 {
@@ -8,7 +11,7 @@ namespace GeneSIPs.Header
     {
         public Via Via { get; set; }
         public From From { get; set; }
-        public To To { get; set; }
+        public SipAddress To { get; set; }
         public CallId CallId { get; set; }
         public CSeq CSeq { get; set; }
         public string UserAgent { get; set; }
@@ -20,12 +23,37 @@ namespace GeneSIPs.Header
         public int MaxForwards { get; set; }
         public List<Request.RequestLine.MethodTypes> Allow { get; set; }
 
+        public static Faker<MessageHeader> Faker { get; set; } = new Faker<MessageHeader>()
+            .StrictMode(false)
+            .RuleFor(o => o.Accept, f => "application/sdp")
+            .RuleFor(o => o.Allow, f => new List<Request.RequestLine.MethodTypes>()
+                    {
+                        {Request.RequestLine.MethodTypes.INVITE  },
+                        {Request.RequestLine.MethodTypes.ACK  },
+                        {Request.RequestLine.MethodTypes.CANCEL  },
+                        {Request.RequestLine.MethodTypes.BYE  },
+                        {Request.RequestLine.MethodTypes.REFER  },
+                        {Request.RequestLine.MethodTypes.OPTIONS  },
+                        {Request.RequestLine.MethodTypes.INFO  }
+                    })
+            .RuleFor(o => o.CallId, f => CallId.Faker.Generate(1).First())
+            //.RuleFor(o => o.ContentLength, f => ) //TODO: Need to actually calculate the size of the body lol
+            .RuleFor(o => o.ContentType, f => "application/sdp")
+            .RuleFor(o => o.CSeq, f => CSeq.Faker.Generate(1).First())
+            .RuleFor(o => o.Expires, f => f.Random.Int(5,25))
+            .RuleFor(o => o.From, f => From.Faker.Generate(1).First())
+            .RuleFor(o => o.MaxForwards, f => f.Random.Int(1,35))
+            .RuleFor(o => o.To, f => SipAddress.Faker.Generate(1).First())
+            .RuleFor(o => o.UserAgent , f => f.Internet.UserAgent())
+            .RuleFor(o => o.Via, f => Via.Faker.Generate(1).First())
+            ;
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(Via.ToString());
             sb.Append(From.ToString());
-            sb.Append(To.ToString());
+            sb.Append($"To: <{To.ToString()}>").AppendLine();
             sb.Append(CallId.ToString());
             sb.Append(CSeq.ToString());
             if(!string.IsNullOrEmpty(UserAgent)) sb.Append($"User-Agent: {UserAgent}").AppendLine();

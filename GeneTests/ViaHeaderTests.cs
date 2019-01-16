@@ -38,15 +38,19 @@ namespace GeneTests
                 ;
 
 
-            List<string> generated = new List<string>();
+            List<MessageHeader> Headers = new List<MessageHeader>();
+            Headers.AddRange(MessageHeader.Faker.Generate(1));
 
-            Via.Faker.Generate(50).ForEach(x =>
+
+            Assert.Equal(1, Headers.Count);
+
+            List<string> HeaderStrings = new List<string>();
+            Headers.ForEach(x =>
             {
-               generated.Add(x.ToString());
+                HeaderStrings.Add(x.ToString());
             });
 
-
-            Assert.Equal(50, generated.Count);
+            Assert.Equal(Headers.Count, HeaderStrings.Count);
         }
     }
 }

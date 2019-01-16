@@ -25,7 +25,7 @@ namespace GeneSIPs.Header
         }
 
         public static Faker<CallId> Faker { get; set; } = new Faker<CallId>()
-            .StrictMode(true)
+            .StrictMode(false)
             .RuleFor(o => o.Identifier, f => f.Random.String2(10, "abcdefghijklmnopqrstuvwxy0123456789"))
             .RuleFor(o => o.Host, f => IPAddress.Parse(f.Internet.Ip()));
 
