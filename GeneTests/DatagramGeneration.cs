@@ -1,6 +1,9 @@
+using GeneSIPs;
 using GeneSIPs.Request;
 using System;
+using System.Collections.Generic;
 using Xunit;
+using System.Linq;
 
 namespace GeneTests
 {
@@ -9,21 +12,10 @@ namespace GeneTests
         [Fact]
         public void VerifyDatagramGeneration()
         {
-            RequestUser user = new RequestUser()
-            {
-                HostPart = "sometelco.biz",
-                UserPart = "7047509099"
-            };
+            List<SIPMessage> Messages = new List<SIPMessage>();
+            Messages.AddRange(SIPMessage.Faker.Generate(50));
 
-            RequestLine RequestLine = new RequestLine()
-            {
-                Method = RequestLine.MethodTypes.INVITE,
-                RequestURI = user,
-            };
-
-            string Output = RequestLine.ToString();
-
-            Assert.True(true);
+            Assert.NotEmpty(Messages);
         }
     }
 }
