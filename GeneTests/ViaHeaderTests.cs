@@ -3,10 +3,12 @@ using GeneSIPs.Common;
 using GeneSIPs.Header;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Xunit;
 
 namespace GeneTests
@@ -20,6 +22,7 @@ namespace GeneTests
         [Fact]
         public void ToStringWorks()
         {
+            int Generations = 50000;
 
             Faker<SipUser> sfaker = new Faker<SipUser>()
                 .StrictMode(true)
@@ -39,10 +42,15 @@ namespace GeneTests
 
 
             List<MessageHeader> Headers = new List<MessageHeader>();
-            Headers.AddRange(MessageHeader.Faker.Generate(1));
+
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Headers.AddRange(MessageHeader.Faker.Generate(Generations));
+
+            sw.Stop();
 
 
-            Assert.Equal(1, Headers.Count);
+            Assert.Equal(Generations, Headers.Count);
 
             List<string> HeaderStrings = new List<string>();
             Headers.ForEach(x =>
