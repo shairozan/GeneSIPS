@@ -22,6 +22,11 @@ namespace GeneSIPs
             Faker = CustomFaker;
         }
 
+        public static void SetCustomFaker(Faker<SIPMessage> fakzor)
+        {
+            Faker = fakzor;
+        }
+
         //Contains the Request URI Etc
         public RequestLine RequestLine { get; set; }
         public MessageHeader Header { get; set; }
@@ -33,7 +38,10 @@ namespace GeneSIPs
             .RuleFor(o => o.Body, f => MessageBody.Faker.Generate(1).First())
             .FinishWith( (f,u) =>
             {
-                u.Header.ContentLength = Encoding.UTF8.GetBytes(u.Body.ToString()).Length;
+                if(!string.IsNullOrEmpty(u.Body.ToString()))
+                {
+                    u.Header.ContentLength = Encoding.UTF8.GetBytes(u.Body.ToString()).Length;
+                }
             });
   
 
@@ -41,10 +49,15 @@ namespace GeneSIPs
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+
             sb.Append(RequestLine.ToString());
             sb.Append(Header.ToString());
             sb.AppendLine();
-            sb.Append(Body.ToString());
+            if(Body != null)
+            {
+                sb.Append(Body.ToString());
+            }
+            
 
             return sb.ToString();
         }
