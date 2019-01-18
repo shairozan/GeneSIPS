@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>SIPS Traffic Generation with baked in faker components.</Description>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Updated with tests and starts for de-serialization of response datagrams</PackageReleaseNotes>
+    <Version>1.0.2</Version>
     <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
 
