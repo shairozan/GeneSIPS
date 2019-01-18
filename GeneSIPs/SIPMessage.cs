@@ -30,7 +30,12 @@ namespace GeneSIPs
             .StrictMode(false)
             .RuleFor(o => o.RequestLine, f => RequestLine.Faker.Generate(1).First())
             .RuleFor(o => o.Header, f => MessageHeader.Faker.Generate(1).First())
-            .RuleFor(o => o.Body, f => MessageBody.Faker.Generate(1).First());
+            .RuleFor(o => o.Body, f => MessageBody.Faker.Generate(1).First())
+            .FinishWith( (f,u) =>
+            {
+                u.Header.ContentLength = Encoding.UTF8.GetBytes(u.Body.ToString()).Length;
+            });
+  
 
 
         public override string ToString()
