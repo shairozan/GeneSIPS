@@ -31,5 +31,22 @@ namespace GeneSIPs.Header
             sb.AppendLine();
             return sb.ToString();
         }
+
+        public static CSeq Parse(string Input)
+        {
+            CSeq c = new CSeq();
+            string pieces = Input.Split(":")[1].TrimStart();
+            string[] Components = pieces.Split(" ");
+            if(Components.Length != 2)
+            {
+                throw new IndexOutOfRangeException("CSeq requires exactly two components");
+            }
+
+            c.Sequence = int.Parse(Components[0]);
+            c.Method = (Request.RequestLine.MethodTypes)Enum.Parse(typeof(Request.RequestLine.MethodTypes), Components[1]);
+
+
+            return c;
+        }
     }
 }

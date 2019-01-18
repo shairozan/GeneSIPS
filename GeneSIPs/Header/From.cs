@@ -47,5 +47,24 @@ namespace GeneSIPs.Header
 
             return sb.ToString();
         }
+
+        public static From Parse(string Input)
+        {
+            From f = new From();
+            string[] FirstPiece = Input.Split(" ");
+            f.DisplayName = FirstPiece[1].Replace("\"","");
+
+            string[] SecondPieces = FirstPiece[2].Split("<");
+            f.User = new SipAddress();
+            f.User.User = SecondPieces[1].Split(":")[1].Split(">")[0].Split("@")[0];
+            f.User.Domain = SecondPieces[1].Split(":")[1].Split(">")[0].Split("@")[1];
+
+            if (Input.Contains("tag"))
+            {
+                f.Tag = Input.Split(";").Last().Split("=").Last();
+            }
+
+            return f;
+        }
     }
 }
