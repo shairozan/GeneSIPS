@@ -33,7 +33,7 @@ namespace GeneSIPs.Header
         public static Faker<Via> Faker { get; set; } = Faker = new Faker<Via>()
             .StrictMode(false)
             .RuleFor(o => o.SIPVersion, f => "SIP/2.0")
-            .RuleFor(o => o.Branch, f => f.Random.String2(20, "abcdefghijklmnopqrstuvwxyz"))
+            .RuleFor(o => o.Branch, f => "z9hG4bK") //Magic cookie defined by IETF SIP Document. All Branch identifiers should start with this
             .RuleFor(o => o.RPort, f => "rport")
             //.RuleFor(o => o.SentBy, f => )
             .RuleFor(o => o.Protocol, f => f.Random.Enum<Via.Protocols>())

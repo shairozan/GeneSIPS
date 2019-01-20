@@ -52,12 +52,12 @@ namespace GeneSIPs
 
             sb.Append(RequestLine.ToString());
             sb.Append(Header.ToString());
-            sb.AppendLine();
+
             if(Body != null)
             {
+                sb.AppendLine();
                 sb.Append(Body.ToString());
-            }
-            
+            }         
 
             return sb.ToString();
         }
