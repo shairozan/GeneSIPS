@@ -53,16 +53,16 @@ namespace GeneSIPs.Header
             StringBuilder sb = new StringBuilder();
             sb.Append(Via.ToString());
             sb.Append(From.ToString());
-            sb.Append($"To: <{To.ToString()}>").Append("\n");
+            sb.Append($"To: <sip:{To.ToString()}>").AppendLine();
             sb.Append(CallId.ToString());
             sb.Append(CSeq.ToString());
-            if(!string.IsNullOrEmpty(UserAgent)) sb.Append($"User-Agent: {UserAgent}").Append("\n");
-            if(Expires > 0 ) sb.Append($"Expires: {Expires.ToString()}").Append("\n");
-            if(!string.IsNullOrEmpty(Accept)) sb.Append($"Accept: {Accept}").Append("\n");
-            if(!string.IsNullOrEmpty(ContentType)) sb.Append($"Content-Type: {ContentType}").Append("\n");
-            if(ContentLength > 0 ) sb.Append($"Content-Length: {ContentLength.ToString()}").Append("\n");
-            if (MaxForwards > 0) sb.Append($"Max Forwards: {MaxForwards}").Append("\n");
-            if (Allow != null && Allow.Count > 0) sb.Append($"Allow: {string.Join(",",Allow)}").Append("\n");
+            if(!string.IsNullOrEmpty(UserAgent)) sb.Append($"User-Agent: {UserAgent}").AppendLine();
+            if(Expires > 0 ) sb.Append($"Expires: {Expires.ToString()}").AppendLine();
+            if(!string.IsNullOrEmpty(Accept)) sb.Append($"Accept: {Accept}").AppendLine();
+            if(!string.IsNullOrEmpty(ContentType)) sb.Append($"Content-Type: {ContentType}").AppendLine();
+            if(ContentLength > 0 ) sb.Append($"Content-Length: {ContentLength.ToString()}").AppendLine();
+            if (MaxForwards > 0) sb.Append($"Max-Forwards: {MaxForwards}").AppendLine();
+            if (Allow != null && Allow.Count > 0) sb.Append($"Allow: {string.Join(",",Allow)}").AppendLine();
 
             return sb.ToString();   
         }

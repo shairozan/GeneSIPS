@@ -35,7 +35,7 @@ namespace GeneSIPs.Header
             StringBuilder sb = new StringBuilder();
             sb.Append($"Call-ID: ");
             sb.Append($"{Identifier}@{Host.ToString()}");
-            sb.Append("\n");
+            sb.AppendLine();
             return sb.ToString();
         }
     }

@@ -22,7 +22,7 @@ namespace GeneSIPs.Response
         {
             Response r = new Response();
 
-            string[] Lines = Input.Split("\n");
+            string[] Lines = Input.Split("\r\n");
 
             foreach(string line in Lines)
             {

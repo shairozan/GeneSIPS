@@ -32,7 +32,7 @@ namespace GeneSIPs.Body
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"a={MediaAttributeFieldName}:{MediaFormat.ToString()} {MIMEType}/{SampleRate}\n");
+            sb.Append($"a={MediaAttributeFieldName}:{MediaFormat.ToString()} {MIMEType}/{SampleRate}").AppendLine();
             return sb.ToString();
         }
     }

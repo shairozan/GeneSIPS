@@ -42,7 +42,7 @@ namespace GeneSIPs.Request
 
         public override string ToString()
         {
-            return $"{Method.ToString().ToUpper()} {RequestURI.ToString()} {SIPVersion}\n";
+            return $"{Method.ToString().ToUpper()} {RequestURI.ToString()} {SIPVersion}\r\n";
         }
     }
 }

@@ -17,7 +17,7 @@ namespace GeneSIPs.Header
         public SipAddress User { get; set; }
         public string Tag { get; set; }
         // ^From: \"[a-zA-Z -_]{1,}\" <[a-zA-z0-9._]{1,}@[a-zA-Z0-9._]{1,}>(?:tag=[a-z0-9]{1,8})?$ is raw regex
-        private Regex Validity = new Regex(@"^From: .[a-zA-Z-_]{1,}. <[a-zA-z0-9._]{1,}@[a-zA-Z0-9._]{1,}>(?:tag=[a-z0-9]{1,8})?$\n");
+        private Regex Validity = new Regex(@"^From: .[a-zA-Z-_]{1,}. <[a-zA-z0-9._]{1,}@[a-zA-Z0-9._]{1,}>(?:tag=[a-z0-9]{1,8})?$\r\n");
         
 
         public bool IsValid()
@@ -36,14 +36,14 @@ namespace GeneSIPs.Header
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"From: \"{DisplayName}\" ");
-            sb.Append($"<{User.ToString()}>");
+            sb.Append($"<sip:{User.ToString()}>");
 
             if(!string.IsNullOrWhiteSpace(Tag))
             {
                 sb.Append($"tag={Tag}");
             }
 
-            sb.Append("\n");
+            sb.AppendLine();
 
             return sb.ToString();
         }

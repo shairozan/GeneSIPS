@@ -44,7 +44,7 @@ namespace GeneSIPs.Body
             sb.Append($"{NetworkType} ");
             sb.Append($"{AddressType} ");
             sb.Append($"{OwnerAddress.ToString()}");
-            sb.Append("\n");
+            sb.AppendLine();
 
             return sb.ToString();
         }
