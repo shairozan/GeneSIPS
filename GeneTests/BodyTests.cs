@@ -17,8 +17,17 @@ namespace GeneTests
         {
             SIPMessage testmessage = SIPMessage.Faker.Generate(1).First();
 
-            Assert.True(testmessage.Header.ContentLength > 0);
-            Assert.True(testmessage.Header.ContentLength == Encoding.UTF8.GetByteCount(testmessage.Body.ToString()));
+            if(testmessage.Body != null)
+            {
+                Assert.True(testmessage.Header.ContentLength > 0);
+                Assert.True(testmessage.Header.ContentLength == Encoding.UTF8.GetByteCount(testmessage.Body.ToString()));
+            } else
+            {
+                Assert.True(testmessage.Header.ContentLength == 0);
+            }
+
+            
+            
         }
 
         [Fact]
