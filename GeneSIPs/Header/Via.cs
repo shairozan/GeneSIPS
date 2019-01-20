@@ -57,7 +57,7 @@ namespace GeneSIPs.Header
                 sb.Append($"{RPort}");
             }
 
-            sb.AppendLine();
+            sb.Append("\n");
 
             return sb.ToString();
         }

@@ -28,7 +28,7 @@ namespace GeneSIPs.Body
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"t={StartTime} {StopTime}");
-            sb.AppendLine();
+            sb.Append("\n");
             return sb.ToString();
         }
     }

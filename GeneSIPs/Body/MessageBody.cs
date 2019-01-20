@@ -53,9 +53,9 @@ namespace GeneSIPs.Body
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"v={Version.ToString()}").AppendLine();
+            sb.Append($"v={Version.ToString()}").Append("\n");
             sb.Append(Owner.ToString());
-            sb.Append($"s={SessionName}").AppendLine();
+            sb.Append($"s={SessionName}").Append("\n");
             sb.Append(ConnectionInformation.ToString());
             sb.Append(Time.ToString());
             sb.Append(MediaDescription.ToString());
@@ -66,7 +66,7 @@ namespace GeneSIPs.Body
             }
 
             //Lastly Append the weird custom one
-            sb.Append("a=sendrecv").AppendLine();
+            sb.Append("a=sendrecv").Append("\n");
             return sb.ToString();
         }
     }

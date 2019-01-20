@@ -28,7 +28,7 @@ namespace GeneSIPs.Header
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"CSeq: {Sequence} {Method.ToString()}");
-            sb.AppendLine();
+            sb.Append("\n");
             return sb.ToString();
         }
 

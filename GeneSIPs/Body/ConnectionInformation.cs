@@ -30,7 +30,7 @@ namespace GeneSIPs.Body
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"c={NetworkType} {AddressType} {Address.ToString()}").AppendLine();
+            sb.Append($"c={NetworkType} {AddressType} {Address.ToString()}\n");
             return sb.ToString();
         }
     }

@@ -51,7 +51,7 @@ namespace GeneSIPs.Body
                 sb.Append($"{MediaType.ToString()} ");
             }
 
-            sb.AppendLine();
+            sb.Append("\n");
             return sb.ToString();
         }
     }

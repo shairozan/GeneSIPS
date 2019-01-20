@@ -17,5 +17,18 @@ namespace GeneTests
 
             Assert.NotEmpty(Messages);
         }
+
+        /// <summary>
+        /// When looking into wireshark dumps, the codes use hex falue 0a
+        /// which apparently just correlates to new line (\n)
+        /// </summary>
+        [Fact]
+        public void VerifyNoCarriageReturns()
+        {
+            SIPMessage Message = SIPMessage.Faker.Generate(1).First();
+            string MessageString = Message.ToString();
+           
+            Assert.DoesNotContain("\r", MessageString);
+        }
     }
 }
