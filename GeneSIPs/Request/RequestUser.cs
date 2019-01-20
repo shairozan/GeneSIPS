@@ -21,7 +21,7 @@ namespace GeneSIPs.Request
         public string HostPart { get; set; }
         public static Faker<RequestUser> Faker { get; set; } = new Faker<RequestUser>()
             .StrictMode(false)
-            .RuleFor(o => o.UserPart, f => f.Phone.PhoneNumber())
+            .RuleFor(o => o.UserPart, f => f.Phone.PhoneNumber("###########"))
             .RuleFor(o => o.HostPart, f => f.Internet.DomainName());
 
         public override string ToString()

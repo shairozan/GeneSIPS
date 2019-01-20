@@ -4,9 +4,15 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>SIPS Traffic Generation with baked in faker components.</Description>
-    <PackageReleaseNotes>Updated with tests and starts for de-serialization of response datagrams</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Fixed default faker rules to create a number that would be valid internationally (Stripped extension) and built test for it.</PackageReleaseNotes>
+    <Version>1.0.4</Version>
     <NeutralLanguage></NeutralLanguage>
+    <Authors>Darrell Breeden</Authors>
+    <PackageProjectUrl>https://github.com/shairozan/GeneSIPS</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/shairozan/GeneSIPS/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/shairozan/GeneSIPS</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>SIP</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
