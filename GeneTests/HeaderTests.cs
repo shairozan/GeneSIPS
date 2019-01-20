@@ -17,6 +17,25 @@ namespace GeneTests
         //    SIPMessage message = SIPMessage.Faker.Generate(1).First();
         //    Assert.True(message.Header.From.IsValid());
         //}
+
+        [Fact]
+        public void CustomHeadersAreRendered()
+        {
+            SIPMessage message = SIPMessage.Faker.Generate(1).First();
+            Dictionary<string, string> CustomHeaders = new Dictionary<string, string>();
+            CustomHeaders.Add("Test-Case", "1");
+
+            message.Header.CustomHeaders = CustomHeaders;
+
+            Assert.Contains("Test-Case: 1", message.ToString());
+        }
+
+        [Fact]
+        public void VerifyCustomHeadersNotPresentWithEmptyDictionary()
+        {
+            SIPMessage message = SIPMessage.Faker.Generate(1).First();
+            Assert.DoesNotContain("Test-Case: 1", message.ToString());
+        }
         
     }
 }

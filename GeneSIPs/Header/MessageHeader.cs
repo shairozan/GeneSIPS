@@ -22,6 +22,7 @@ namespace GeneSIPs.Header
         //Contact will be generated based on the components of the From
         public int MaxForwards { get; set; }
         public List<Request.RequestLine.MethodTypes> Allow { get; set; }
+        public Dictionary<string, string> CustomHeaders { get; set; } = new Dictionary<string, string>();
 
         public static Faker<MessageHeader> Faker { get; set; } = new Faker<MessageHeader>()
             .StrictMode(false)
@@ -63,6 +64,13 @@ namespace GeneSIPs.Header
             if(ContentLength > 0 ) sb.Append($"Content-Length: {ContentLength.ToString()}").AppendLine();
             if (MaxForwards > 0) sb.Append($"Max-Forwards: {MaxForwards}").AppendLine();
             if (Allow != null && Allow.Count > 0) sb.Append($"Allow: {string.Join(",",Allow)}").AppendLine();
+            if(CustomHeaders.Count() > 0)
+            {
+                foreach(KeyValuePair<string,string> Header in CustomHeaders)
+                {
+                    sb.Append($"{Header.Key}: {Header.Value}").AppendLine();
+                }
+            }
 
             return sb.ToString();   
         }
