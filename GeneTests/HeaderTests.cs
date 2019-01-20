@@ -27,14 +27,24 @@ namespace GeneTests
 
             message.Header.CustomHeaders = CustomHeaders;
 
-            Assert.Contains("Test-Case: 1", message.ToString());
+            Assert.Contains("X-Test-Case: 1", message.ToString());
         }
 
         [Fact]
         public void VerifyCustomHeadersNotPresentWithEmptyDictionary()
         {
             SIPMessage message = SIPMessage.Faker.Generate(1).First();
-            Assert.DoesNotContain("Test-Case: 1", message.ToString());
+            Assert.DoesNotContain("X-Test-Case: 1", message.ToString());
+            Assert.DoesNotContain("X-",message.ToString());
+        }
+
+        [Fact]
+        public void AllowMaxForwardsofZero()
+        {
+            SIPMessage message = SIPMessage.Faker.Generate(1).First();
+            message.Header.MaxForwards = 0;
+
+            Assert.Contains("Max-Forwards", message.ToString());
         }
         
     }

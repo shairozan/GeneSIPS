@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>SIPS Traffic Generation with baked in faker components.</Description>
-    <PackageReleaseNotes>Fixed default faker rules to create a number that would be valid internationally (Stripped extension) and built test for it.</PackageReleaseNotes>
-    <Version>1.0.4</Version>
+    <PackageReleaseNotes>Allow for Max Forwards of 0</PackageReleaseNotes>
+    <Version>1.0.6</Version>
     <NeutralLanguage></NeutralLanguage>
     <Authors>Darrell Breeden</Authors>
     <PackageProjectUrl>https://github.com/shairozan/GeneSIPS</PackageProjectUrl>

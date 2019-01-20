@@ -62,13 +62,13 @@ namespace GeneSIPs.Header
             if(!string.IsNullOrEmpty(Accept)) sb.Append($"Accept: {Accept}").AppendLine();
             if(!string.IsNullOrEmpty(ContentType)) sb.Append($"Content-Type: {ContentType}").AppendLine();
             if(ContentLength > 0 ) sb.Append($"Content-Length: {ContentLength.ToString()}").AppendLine();
-            if (MaxForwards > 0) sb.Append($"Max-Forwards: {MaxForwards}").AppendLine();
+            sb.Append($"Max-Forwards: {MaxForwards}").AppendLine();
             if (Allow != null && Allow.Count > 0) sb.Append($"Allow: {string.Join(",",Allow)}").AppendLine();
             if(CustomHeaders.Count() > 0)
             {
                 foreach(KeyValuePair<string,string> Header in CustomHeaders)
                 {
-                    sb.Append($"{Header.Key}: {Header.Value}").AppendLine();
+                    sb.Append($"X-{Header.Key}: {Header.Value}").AppendLine();
                 }
             }
 
