@@ -46,6 +46,16 @@ namespace GeneTests
 
             Assert.Contains("Max-Forwards", message.ToString());
         }
+
+        [Fact]
+        public void BranchHasSemicolon()
+        {
+            SIPMessage message = SIPMessage.Faker.Generate(1).First();
+
+            message.Header.From.Tag = "iamabanana";
+
+            Assert.Contains(";", message.Header.From.ToString());
+        }
         
     }
 }

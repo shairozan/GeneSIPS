@@ -40,7 +40,7 @@ namespace GeneSIPs.Header
 
             if(!string.IsNullOrWhiteSpace(Tag))
             {
-                sb.Append($"tag={Tag}");
+                sb.Append($";tag={Tag}");
             }
 
             sb.AppendLine();

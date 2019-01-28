@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>SIPS Traffic Generation with baked in faker components.</Description>
-    <PackageReleaseNotes>Allow for Max Forwards of 0</PackageReleaseNotes>
-    <Version>1.0.6</Version>
+    <PackageReleaseNotes>Fixing issues with malformed branch text.</PackageReleaseNotes>
+    <Version>1.0.7</Version>
     <NeutralLanguage></NeutralLanguage>
     <Authors>Darrell Breeden</Authors>
     <PackageProjectUrl>https://github.com/shairozan/GeneSIPS</PackageProjectUrl>
