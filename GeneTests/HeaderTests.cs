@@ -48,13 +48,22 @@ namespace GeneTests
         }
 
         [Fact]
-        public void BranchHasSemicolon()
+        public void BranchHasSemicolonIfTagPresent()
         {
             SIPMessage message = SIPMessage.Faker.Generate(1).First();
 
             message.Header.From.Tag = "iamabanana";
 
             Assert.Contains(";", message.Header.From.ToString());
+        }
+
+        [Fact]
+        public void BranchDoesNotHaveSemicolonIfTagNull()
+        {
+            SIPMessage message = SIPMessage.Faker.Generate(1).First();
+            message.Header.From.Tag = null;
+
+            Assert.DoesNotContain(";", message.Header.From.ToString());
         }
         
     }
