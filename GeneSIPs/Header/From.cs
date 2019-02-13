@@ -15,7 +15,7 @@ namespace GeneSIPs.Header
         /// </summary>
         public string DisplayName { get; set; }
         public SipAddress User { get; set; }
-        public string Tag { get; set; }
+        public string Tag { get; set; } //Required per RFC 3261 Section 19.3
         // ^From: \"[a-zA-Z -_]{1,}\" <[a-zA-z0-9._]{1,}@[a-zA-Z0-9._]{1,}>(?:tag=[a-z0-9]{1,8})?$ is raw regex
         private Regex Validity = new Regex(@"^From: .[a-zA-Z-_]{1,}. <[a-zA-z0-9._]{1,}@[a-zA-Z0-9._]{1,}>(?:tag=[a-z0-9]{1,8})?$\r\n");
         
@@ -30,7 +30,7 @@ namespace GeneSIPs.Header
             .StrictMode(false)
             .RuleFor(o => o.DisplayName, f => f.Name.FullName())
             .RuleFor(o => o.User, f => SipAddress.Faker.Generate(1).First())
-            .RuleFor(o => o.Tag, f => f.Random.String2(5, "abcdefghijklmopqrstuvwxyz"));
+            .RuleFor(o => o.Tag, f => Guid.NewGuid().ToString());
 
         public override string ToString()
         {

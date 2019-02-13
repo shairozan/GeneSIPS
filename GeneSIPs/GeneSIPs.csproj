@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>SIPS Traffic Generation with baked in faker components.</Description>
-    <PackageReleaseNotes>Fixing issues with malformed branch text.</PackageReleaseNotes>
-    <Version>1.0.7</Version>
+    <PackageReleaseNotes>Updating the from field to make sure that a GUID is generated for tag when using faker to be RFC compliant</PackageReleaseNotes>
+    <Version>1.0.8</Version>
     <NeutralLanguage></NeutralLanguage>
     <Authors>Darrell Breeden</Authors>
     <PackageProjectUrl>https://github.com/shairozan/GeneSIPS</PackageProjectUrl>
